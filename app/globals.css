@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-start: #0f172a;
+  --background-end: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --tag-bg: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --card-glow: 0 0 20px rgba(66, 153, 225, 0.15);
+  --button-glow: 0 0 15px rgba(59, 130, 246, 0.3);
+  --button-hover-glow: 0 0 25px rgba(59, 130, 246, 0.5);
+}
+
+.light-theme {
+  --background-start: #e2e8f0;
+  --background-end: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: rgba(15, 23, 42, 0.7);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --tag-bg: #94a3b8;
+  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --card-glow: 0 0 20px rgba(66, 153, 225, 0.1);
+  --button-glow: 0 0 15px rgba(59, 130, 246, 0.2);
+  --button-hover-glow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background-start);
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    var(--background-start) 0%,
+    var(--background-end) 100%
+  );
+  min-height: 100vh;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--card-shadow), var(--card-glow);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  box-shadow: var(--card-shadow), 
+              var(--card-glow),
+              0 0 25px rgba(66, 153, 225, 0.2);
+}
+
+.tag {
+  background: var(--tag-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  border: 1px solid var(--glass-border);
+}
+
+.tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(66, 153, 225, 0.2);
+}
+
+.quote {
+  border-left: 3px solid #3b82f6;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #3b82f6;
+}
+
+.glass-button {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--button-glow);
+}
+
+.glass-button-glow {
+  background: rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: var(--button-glow);
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.glass-button-glow:hover {
+  background: rgba(59, 130, 246, 0.2);
+  box-shadow: var(--button-hover-glow);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--background-start);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-bg);
+  border-radius: 5px;
+  border: 2px solid var(--background-start);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-border);
+}
+
+/* Smooth Transitions */
+* {
+  transition: color 0.3s ease, 
+             background-color 0.3s ease, 
+             border-color 0.3s ease, 
+             box-shadow 0.3s ease;
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: var(--text-primary);
+}
+
+/* Focus Outline */
+:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .tag {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Card Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Button Press Effect */
+.active-press {
+  transform: scale(0.98);
+}
